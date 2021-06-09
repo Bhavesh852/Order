@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search</title>
+</head>
+<body>
+
+<nav>
+	<form action="/search/">
+	<h2 style="display: inline;">Orders</h2>
+	
+	<input style="display: inline; margin-left: 10%; " type="text" name="q">
+	<input type="submit" value="search">
+	</form>
+	<a href="/" style="float: right;"><button>Add order</button></a>
+	
+</nav>
+
+<table style="width: 75%;">
+	<tr style="background-color: #ccc;">
+		<th>Customer</th>
+		<th>Product</th>
+		<th>Qty</th>
+		<th>Unit_price</th>
+		<th>Total_price</th>
+		<th>Action</th>
+	</tr>
+	{% for x,y in order.items %}
+	<tr style="text-align: center;">
+		<td>{{y.customer_id}}</td>
+		<td>{{y.product_id}}</td>
+		<td>{{y.qty}}</td>
+		<td>{{y.unit_price}}</td>
+		<td>{{y.total_price}}</td>
+		<td><a href="/edit/{{y.id}}/">edit</a> <a href="/delete/{{i.id}}/">delete</a></td>
+	</tr>
+	{% endfor %}
+</table>
+</body>
+</html>
